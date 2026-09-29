@@ -2,9 +2,19 @@
 
 # Excalidraw Store
 
-The server that stores all the encrypted sharable drawings from [Excalidraw](https://excalidraw.com) on Google Storage.
+The server that stores all the encrypted sharable drawings from [Excalidraw](https://excalidraw.com).
+
+By default blobs are stored on Google Cloud Storage. For local / Docker use, set `STORAGE_BACKEND=local` to write files under `LOCAL_STORAGE_PATH` (default `./data` or `/data` in the all-in-one image). No GCS credentials are required in local mode.
 
 ## Development
+
+### Local filesystem (no GCS)
+
+```bash
+STORAGE_BACKEND=local LOCAL_STORAGE_PATH=./data yarn dev
+```
+
+### Google Cloud Storage
 
 Get the [`service key`](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) as JSON and store it under `keys` directory with the name of the project ID.
 
